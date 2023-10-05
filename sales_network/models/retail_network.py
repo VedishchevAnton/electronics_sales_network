@@ -13,7 +13,8 @@ class RetailNetwork(models.Model):
                                     related_name='retail_network_contacts')
     supplied_products = models.ManyToManyField(Products, verbose_name='Продукция торговой сети',
                                                related_name='retail_network_products')
-    factory_supplied = models.ForeignKey(Factory, on_delete=models.SET_NULL, verbose_name='Поставщик оборудования',
+    factory_supplied = models.ForeignKey(Factory, on_delete=models.SET_NULL, null=True,
+                                         verbose_name='Поставщик оборудования',
                                          related_name='supplier')
     debt = models.DecimalField(max_digits=10, decimal_places=2, default=0,
                                verbose_name='Задолженность перед поставщиком')
