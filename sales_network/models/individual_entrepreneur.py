@@ -14,13 +14,14 @@ class IndividualEntrepreneur(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name='Название ИП')
     sales_network = models.ForeignKey(SalesNetwork, on_delete=models.CASCADE, verbose_name='Название сети продаж')
     contacts = models.OneToOneField(Contacts, on_delete=models.CASCADE, verbose_name='Контактная информация',
-                                    related_name='retail_network_contacts')
+                                    related_name='individual_entrepreneur_contacts')
     supplied_products = models.ManyToManyField(Products, verbose_name='Продукция торговой сети',
-                                               related_name='retail_network_products')
+                                               related_name='individual_entrepreneur_products')
     retail_network_supplied = models.OneToOneField(RetailNetwork, on_delete=models.SET_NULL,
-                                                   verbose_name='Поставщик оборудования',
-                                                   related_name='retail_network_supplier', **NULLABLE)
-    factory_supplied = models.OneToOneField(Factory, on_delete=models.SET_NULL, verbose_name='Поставщик оборудования',
+                                                   verbose_name='Поставщик оборудования(розница)',
+                                                   related_name='individual_entrepreneur_supplier', **NULLABLE)
+    factory_supplied = models.OneToOneField(Factory, on_delete=models.SET_NULL,
+                                            verbose_name='Поставщик оборудования(завод)',
                                             related_name='factory_supplier', **NULLABLE)
     debt = models.DecimalField(max_digits=10, decimal_places=2, default=0,
                                verbose_name='Задолженность перед поставщиком')
