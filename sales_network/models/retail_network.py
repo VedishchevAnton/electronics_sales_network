@@ -5,6 +5,8 @@ from sales_network.models.contacts import Contacts
 from sales_network.models.factory import Factory
 from sales_network.models.sales_network import SalesNetwork
 
+NULLABLE = {'blank': True, 'null': True}
+
 
 class RetailNetwork(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name='Название розничной сети')
@@ -13,9 +15,8 @@ class RetailNetwork(models.Model):
                                     related_name='retail_network_contacts')
     supplied_products = models.ManyToManyField(Products, verbose_name='Продукция торговой сети',
                                                related_name='retail_network_products')
-    factory_supplied = models.ForeignKey(Factory, on_delete=models.SET_NULL, null=True,
-                                         verbose_name='Поставщик оборудования',
-                                         related_name='supplier')
+    factory_supplied = models.ForeignKey(Factory, on_delete=models.SET_NULL, verbose_name='Поставщик оборудования',
+                                         related_name='supplier', **NULLABLE)
     debt = models.DecimalField(max_digits=10, decimal_places=2, default=0,
                                verbose_name='Задолженность перед поставщиком')
     created_at = models.DateTimeField(auto_now_add=True)
