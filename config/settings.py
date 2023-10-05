@@ -40,6 +40,9 @@ STANDARD_APPS = [
 USER_APPS = [
     'rest_framework',
     'phonenumber_field',
+    'users',
+    'products',
+    'sales_network',
 ]
 
 INSTALLED_APPS = STANDARD_APPS + USER_APPS
