@@ -35,7 +35,7 @@ class CustomUserManager(UserManager):
 class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True, verbose_name='Почта')
-    phone_number = PhoneNumberField(unique=True, verbose_name='Номер телефона')  # формат E.164
+    phone_number = PhoneNumberField(unique=True, verbose_name='Номер телефона', **NULLABLE)  # формат E.164
     country = models.CharField(max_length=100, verbose_name='Страна', **NULLABLE)
 
     USERNAME_FIELD = "email"
