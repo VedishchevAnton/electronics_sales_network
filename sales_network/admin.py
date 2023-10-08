@@ -5,6 +5,7 @@ from sales_network.models.factory import Factory
 from sales_network.models.individual_entrepreneur import IndividualEntrepreneur
 from sales_network.models.retail_network import RetailNetwork
 from sales_network.models.sales_network import SalesNetwork
+from sales_network.admin_actions import clear_debt
 
 from django.urls import reverse
 from django.utils.html import format_html
@@ -54,6 +55,7 @@ class RetailNetworkAdmin(admin.ModelAdmin):
     )
     list_filter = ('name', 'sales_network__name', 'contacts__city')
     search_fields = ('name',)
+    actions = [clear_debt]
 
     def display_products(self, obj):
         return ", ".join([p.name for p in obj.supplied_products.all()])
@@ -77,6 +79,7 @@ class IndividualEntrepreneurAdmin(admin.ModelAdmin):
     )
     list_filter = ('name', 'sales_network__name', 'contacts__city')
     search_fields = ('name',)
+    actions = [clear_debt]
 
     def display_products(self, obj):
         return ", ".join([p.name for p in obj.supplied_products.all()])
