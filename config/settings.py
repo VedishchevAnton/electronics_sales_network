@@ -40,6 +40,7 @@ STANDARD_APPS = [
 USER_APPS = [
     'rest_framework',
     'phonenumber_field',
+    'django_filters',
     'users',
     'products',
     'sales_network',
