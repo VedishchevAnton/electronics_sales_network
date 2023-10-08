@@ -10,6 +10,3 @@ class RetailNetworkSerializer(serializers.ModelSerializer):
         model = RetailNetwork
         fields = ['id', 'name', 'sales_network', 'contacts', 'supplied_products', 'factory_supplied', 'debt',
                   'created_at', 'is_active']
-
-
-
