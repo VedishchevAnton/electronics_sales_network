@@ -136,9 +136,15 @@ AUTH_USER_MODEL = 'users.User'
 
 # Настройки JWT-токенов
 REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
+    ],  # Настройки JWT-токенов
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'  # перекрываем полностью всю работу от анонимных пользователей
+    ]
 }
 
 # Настройки срока действия токенов
