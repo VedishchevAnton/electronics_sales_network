@@ -42,6 +42,7 @@ USER_APPS = [
     'rest_framework_simplejwt',
     'phonenumber_field',
     'django_filters',
+    'drf_spectacular',
     'users',
     'products',
     'sales_network',
@@ -144,11 +145,17 @@ REST_FRAMEWORK = {
     ],  # Настройки JWT-токенов
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated'  # перекрываем полностью всю работу от анонимных пользователей
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 # Настройки срока действия токенов
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Онлайн платформу торговой сети электроники',
+    'DESCRIPTION': 'Тестовое задание для старта трудоустройства'
 }
