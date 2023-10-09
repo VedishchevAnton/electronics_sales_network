@@ -9,11 +9,14 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+import os
 from datetime import timedelta
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -83,14 +86,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'sales_network_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 231287,  # Пароль для этого пользователя
+#         'HOST': '127.0.0.1',  # Адрес, на котором развернут сервер БД
+#         'PORT': 5432,  # Порт, на котором работает сервер БД
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'electronics_sales_network',
-        'USER': 'postgres',
-        'PASSWORD': 231287,  # Пароль для этого пользователя
-        'HOST': '127.0.0.1',  # Адрес, на котором развернут сервер БД
-        'PORT': 5432,  # Порт, на котором работает сервер БД
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('POSTGRES_HOST'),
     }
 }
 

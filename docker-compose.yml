@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+
+  db:
+    image: postgres
+    container_name: db_app
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/pgdata
+    env_file:
+      - .env
+    ports:
+      - '5432:5432'
+
+  app:
+    build: .
+    container_name: app_container
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+    volumes:
+      - ./.env:/app/.env
+    env_file:
+      - .env
+
+
+volumes:
+  postgres_data:
