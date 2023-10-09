@@ -62,7 +62,8 @@ git clone
 
 - В созданной директории установите виртуальное окружение, активируйте его и установите необходимые зависимости:
     - python3 -m venv venv
-    - venv/bin/activate
+    - source venv/bin/activate для Linux
+    - venv\Scripts\activate для Windows
     - pip install -r requirements.txt
 
 - Создайте свою базу данных psql -U postgres / CREATE DATABASE
