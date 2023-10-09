@@ -7,8 +7,16 @@ from sales_network.views.individual_entrepreneur import IndividualEntrepreneurLi
     IndividualEntrepreneurDeleteAPIView
 from sales_network.views.retail_network import RetailNetworkListAPIView, RetailNetworkCreateAPIView, \
     RetailNetworkDetailAPIView, RetailNetworkUpdateAPIView, RetailNetworkDeleteAPIView
+from sales_network.views.sales_network import SalesNetworkListAPIView, SalesNetworkCreateAPIView, \
+    SalesNetworkDetailAPIView, SalesNetworkUpdateAPIView, SalesNetworkDeleteAPIView
 
 urlpatterns = [
+    path('sales-networks/', SalesNetworkListAPIView.as_view(), name='sales-network-list'),
+    path('sales-networks/create/', SalesNetworkCreateAPIView.as_view(), name='sales-network-create'),
+    path('sales-networks/<int:pk>/', SalesNetworkDetailAPIView.as_view(), name='sales-network-detail'),
+    path('sales-networks/<int:pk>/update/', SalesNetworkUpdateAPIView.as_view(), name='sales-network-update'),
+    path('sales-networks/<int:pk>/delete/', SalesNetworkDeleteAPIView.as_view(), name='sales-network-delete'),
+
     path('factories/', FactoryListAPIView.as_view(), name='factory-list'),
     path('factories/create/', FactoryCreateAPIView.as_view(), name='factory-create'),
     path('factories/<int:pk>/', FactoryDetailAPIView.as_view(), name='factory-detail'),
