@@ -75,13 +75,3 @@ git clone
 
 - Ваш проект запустился на http://127.0.0.1:8000/
 - Примеры запросов в файле Sales network API.postman_collection.json
-
-# Инструкция по работе с Dockerfile и docker-compose
-- Создаем django проект или заходим в существующий проект.
-- Создаем внутри проекта Dockerfile(обычно он находится в корневой папке проекта).
-- Описываем внутри Dockerfile инструкции для построения Docker-образа
-- Создаем docker-compose.yml(расширение либо yaml, либо yml).
-- Определим все компоненты приложения, их настройки и взаимодействия:
-- Cобираем образ с помощью команды: docker-compose build
-- Запустите контейнеры с помощью команды: docker-compose up
-- Применяем миграции с помощью команды: docker-compose exec app python manage.py migrate
