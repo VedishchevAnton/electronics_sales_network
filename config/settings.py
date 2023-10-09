@@ -86,16 +86,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'sales_network_db',
-#         'USER': 'postgres',
-#         'PASSWORD': 231287,  # Пароль для этого пользователя
-#         'HOST': '127.0.0.1',  # Адрес, на котором развернут сервер БД
-#         'PORT': 5432,  # Порт, на котором работает сервер БД
-#     }
-# }
 
 DATABASES = {
     'default': {
