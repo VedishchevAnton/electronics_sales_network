@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "792f82e4-6e0d-4f4f-a264-3c95d22b4b74",
+		"name": "Sales network API",
+		"description": "Примеры запросов реализации онлайн платформы торговой сети электроники.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28495113"
+	},
+	"item": [
+		{
+			"name": "localhost:8000/users/user/create/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"User@mail.ru\",\n    \"password\": \"q1w2E3R4\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8000/users/user/create/",
+				"description": "Создание пользователя"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/users/token/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"User@mail.ru\",\n    \"password\": \"q1w2E3R4\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8000/users/token/",
+				"description": "Получение токена авторизации (в АПИ могут работать только авторизированные пользователи)"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/sales_network/retail-networks/1/update/",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"debt\": 500.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/sales_network/retail-networks/1/update/",
+				"description": "Проверка запрета обновление через API поля «Задолженность перед поставщиком» на модели розничной торговли."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/sales_network/retail-networks/?country=Россия",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/sales_network/retail-networks/?country=Россия",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"sales_network",
+						"retail-networks",
+						""
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Россия"
+						}
+					]
+				},
+				"description": "Проверка возможности фильтрации объектов по определенной стране на примере модели розничной торговли."
+			},
+			"response": []
+		}
+	]
+}
